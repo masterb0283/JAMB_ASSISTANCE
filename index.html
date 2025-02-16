@@ -57,6 +57,13 @@
                 window.location.href = "assistance.html";
             }, 500);
         }
+        function playVoiceAndNavigate(response) {
+    // Store the selected response in localStorage
+    localStorage.setItem('playAudio', response);
+
+    // Navigate to the next page
+    window.location.href = "assistance.html";
+}
     </script>
 </body>
 </html>

@@ -42,14 +42,15 @@
         </a>
 
     </div>
-      <!-- Audio elements -->
-      <audio id="yesAudio" preload="auto">
+
+    <audio id="yesAudio" preload="auto">
         <source src="./First welcome.mp3" type="audio/mpeg">
     </audio>
-
+    
     <audio id="noAudio" preload="auto">
         <source src="./First welcome.mp3" type="audio/mpeg">
     </audio>
+    
 
     <!-- <div class="countdown-container">
         <div><p>price will increase in the next</p></div>
@@ -309,17 +310,21 @@
 
 
  // Check if there was a playing audio before navigation
- const playingAudio = localStorage.getItem("playingAudio");
-        const audioTime = parseFloat(localStorage.getItem("audioTime")) || 0;
+     window.onload = function() {
+        let response = localStorage.getItem('playAudio');
+        localStorage.removeItem('playAudio'); // Clear it after use
 
-        if (playingAudio) {
-            let audio = playingAudio === 'yes' ? document.getElementById('yesAudio') : document.getElementById('noAudio');
+        let yesAudio = document.getElementById('yesAudio');
+        let noAudio = document.getElementById('noAudio');
 
-            if (audio) {
-                audio.currentTime = audioTime; // Resume from the stored time
-                audio.play().catch(error => console.log("Audio play error:", error));
-            }
+        // Play the correct audio if it exists
+        if (response === 'yes' && yesAudio) {
+            yesAudio.play().catch(err => console.log("Audio play error:", err));
+        } else if (response === 'no' && noAudio) {
+            noAudio.play().catch(err => console.log("Audio play error:", err));
         }
+    };
+
 
 
 document.getElementById('whatsappForm').addEventListener('submit', function(event) {
