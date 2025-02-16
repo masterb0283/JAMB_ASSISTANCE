@@ -8,23 +8,55 @@
 </head>
 <body>
     <header>
-        <img src="./JAMB-logo.jpg" alt="logo" width="40px">
+        <img src="./JAMB-logo.jpg" alt="logo" width="150px">
         <h1>Welcome, Dear Candidate!</h1>
-        <p>Please make sure to read every information posted so that you can understand how the 2025 JAMB assistance will work :</p>
+        <p>ARE YOU A 2025 JAMB CANDIDATE?</p>
     </header>
 
     <main>
         <section>
-            <p>click below link to continue</p>
-            <a href="assistance.html" class="btn">2025 JAMB Assistance</a>
-        </section>
-        <section>
-        
+            <p>Have you registered for 2025 JAMB?</p>
+            <a href="#" class="btn" onclick="playVoiceAndNavigate('yes')">YES</a>
+            <a href="#" class="btn" style="background-color: red; color: black;" onclick="playVoiceAndNavigate('no')">NO</a>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 JAMB | All rights reserved.</p>
+        <p>&copy; OFFICIAL DAN ASSISTANCE 09027420688.</p>
     </footer>
+
+    <!-- Audio elements -->
+    <audio id="yesAudio" preload="auto">
+        <source src="./First welcome.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="noAudio" preload="auto">
+        <source src="./First welcome.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function playVoiceAndNavigate(response) {
+            let yesAudio = document.getElementById('yesAudio');
+            let noAudio = document.getElementById('noAudio');
+    
+            // Stop any currently playing audio
+            yesAudio.pause();
+            noAudio.pause();
+            yesAudio.currentTime = 0;
+            noAudio.currentTime = 0;
+    
+            // Choose the correct audio to play
+            let audio = response === 'yes' ? yesAudio : noAudio;
+            
+            if (audio) {
+                audio.play().catch(error => console.log("Audio play error:", error));
+            }
+    
+            // Navigate to the next page
+            setTimeout(() => {
+                window.location.href = "assistance.html";
+            }, 500);
+        }
+    </script>
 </body>
 </html>

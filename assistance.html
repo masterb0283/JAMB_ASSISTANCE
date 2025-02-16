@@ -12,7 +12,7 @@
 
     <header>
         <nav>
-            <div><a href="./index.html" target="_blank" style="background-color: black; color: white;">JAMB ASSISTANCE AND TUTORIAL</a></div>
+            <div><a href="./assistance.html" target="_blank" style="background-color: black; color: white;">JAMB ASSISTANCE AND TUTORIAL</a></div>
            
             <div class="whatsapp"><a href="https://wa.me/2349027420688"style="background-color: black; color: white;" > CLICK TO <br>WHATSAPP OFFICIAL DAN NOW</a></div>
             <div class="call"><a href="tel:09027420688" style="background-color: black; color: white;" >CLICK TO <br> CALL OFFICIAL DAN NOW</a></div>
@@ -42,6 +42,14 @@
         </a>
 
     </div>
+      <!-- Audio elements -->
+      <audio id="yesAudio" preload="auto">
+        <source src="./First welcome.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="noAudio" preload="auto">
+        <source src="./First welcome.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- <div class="countdown-container">
         <div><p>price will increase in the next</p></div>
@@ -79,6 +87,20 @@
     <div class="exam3">
         <div><h1>is jamb runz or jamb assistance real ?</h1></div>
         <div class="etr2">
+
+            <div class="exam3">
+                <div><h1>is jamb runz or jamb assistance real ?</h1></div>
+                <div class="audio-player">
+                    <button id="play-btn" class="play-btn">&#9658;</button>
+                    <span id="current-time">00:00</span>
+                    <div class="progress-bar" id="progress-bar">
+                        <div id="progress"></div>
+                    </div>
+                    <span id="duration">01:10</span>
+                    <input type="range" id="volume-control" min="0" max="1" step="0.1" value="1">
+                    <audio id="audio" src="./Is jamb runz real edit .mp3"></audio>
+                </div>
+
             <div><b>yes!!!, jamb runz or jamb assistance is 100% real and legit. not only that JAMB runz is true but also congratulation to you because you are at the right place for your assistance to get higher score in your 2025 jamb. </b></div>
         </div>
         
@@ -110,9 +132,11 @@
     <div class="exam5">
         <div><h1>why do you need jamb runz or jamb assistance ?</h1></div>
         <div><p>you need jamb assistance because of your education so that you can get admission into the best university of your choice with a very good score. when you subscribe to OFFICIAL DAN, your desire score is guarantee for you and you can never fail again, also you will get a free admission processing if you subscribe to OFFICIAL DAN. You need jamb runz and assistance so that you dont fail jamb because reading alone can not make you to pass jamb.</p></div>
-        <div><p>you will get your desire score and also you will get admission into any university of your choice</p></div>
-        
+        <div><p>you will get your desire score and also you will get admission into any university of your choice</p></div> 
     </div>
+
+
+
 
     <div class="image4">
         <div><img src=".//IMG-20240828-WA0031.jpg"></div>
@@ -294,6 +318,20 @@
            
 
 <script>
+
+
+ // Check if there was a playing audio before navigation
+ const playingAudio = localStorage.getItem("playingAudio");
+        const audioTime = parseFloat(localStorage.getItem("audioTime")) || 0;
+
+        if (playingAudio) {
+            let audio = playingAudio === 'yes' ? document.getElementById('yesAudio') : document.getElementById('noAudio');
+
+            if (audio) {
+                audio.currentTime = audioTime; // Resume from the stored time
+                audio.play().catch(error => console.log("Audio play error:", error));
+            }
+        }
 
 
 document.getElementById('whatsappForm').addEventListener('submit', function(event) {
