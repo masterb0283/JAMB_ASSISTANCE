@@ -46,10 +46,13 @@
     <audio id="yesAudio" preload="auto">
         <source src="./First welcome.mp3" type="audio/mpeg">
     </audio>
-    
+
     <audio id="noAudio" preload="auto">
         <source src="./First welcome.mp3" type="audio/mpeg">
     </audio>
+
+    
+    
     
 
     <!-- <div class="countdown-container">
@@ -309,21 +312,41 @@
 <script>
 
 
- // Check if there was a playing audio before navigation
-     window.onload = function() {
-        let response = localStorage.getItem('playAudio');
-        localStorage.removeItem('playAudio'); // Clear it after use
+//  // Check if there was a playing audio before navigation
+//      window.onload = function() {
+//         let response = localStorage.getItem('playAudio');
+//         localStorage.removeItem('playAudio'); // Clear it after use
 
-        let yesAudio = document.getElementById('yesAudio');
-        let noAudio = document.getElementById('noAudio');
+//         let yesAudio = document.getElementById('yesAudio');
+//         let noAudio = document.getElementById('noAudio');
 
-        // Play the correct audio if it exists
-        if (response === 'yes' && yesAudio) {
-            yesAudio.play().catch(err => console.log("Audio play error:", err));
-        } else if (response === 'no' && noAudio) {
-            noAudio.play().catch(err => console.log("Audio play error:", err));
-        }
-    };
+//         // Play the correct audio if it exists
+//         if (response === 'yes' && yesAudio) {
+//             yesAudio.play().catch(err => console.log("Audio play error:", err));
+//         } else if (response === 'no' && noAudio) {
+//             noAudio.play().catch(err => console.log("Audio play error:", err));
+//         }
+//     };
+document.addEventListener("DOMContentLoaded", function () {
+            // Get the stored response
+            const playAudio = localStorage.getItem('playAudio');
+
+            // Select the correct audio element
+            let audio;
+            if (playAudio === 'yes') {
+                audio = document.getElementById("yesAudio");
+            } else if (playAudio === 'no') {
+                audio = document.getElementById("noAudio");
+            }
+
+            // Play the audio if it's selected
+            if (audio) {
+                audio.play().catch(error => console.log("Audio playback failed:", error));
+            }
+
+            // Clear the localStorage key to avoid replay on refresh
+            localStorage.removeItem('playAudio');
+        });
 
 
 
