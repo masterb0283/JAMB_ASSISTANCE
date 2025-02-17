@@ -30,27 +30,30 @@
     </a></div>
     
     
-    <div class="fixed1">
+    <!-- <div class="fixed1">
         <a href="https://wa.me/2349027420688">
         <i class="fa-brands fa-square-whatsapp"> message admin now</i>
     </a>
-    </div>
+    </div> -->
 
-    <div class="fixed2">
+    <!-- <div class="fixed2">
         <a href="https://wa.me/2349027420688">
      <i class="fa-brands fa-square-whatsapp">JOIN JAMB GROUP NOW</i>
         </a>
 
-    </div>
+    </div> -->
 
-    <audio id="yesAudio" preload="auto">
-        <source src="./First welcome.mp3" type="audio/mpeg">
-    </audio>
-
-    <audio id="noAudio" preload="auto">
-        <source src="./First welcome.mp3" type="audio/mpeg">
-    </audio>
-
+    <main>
+        <section>
+            <p style="margin-top: 50px;margin-left: 50px;">Have you registered for 2025 JAMB?</p>
+            <a href="#" class="btn" onclick="playVoiceAndNavigate('yes')" style="margin-left: 60px; margin-right: 30px;background-color: green;border-radius: 15px;color: white;">YES</a>
+            <a href="#" class="btn" style="background-color: red; color: black;" onclick="playVoiceAndNavigate('no')">NO</a>
+        </section>
+    </main>
+    
+    <!-- Preload audio files -->
+    <audio id="voiceYes" src="./First welcome.mp3"></audio>
+    <audio id="voiceNo" src="./First welcome.mp3"></audio>
     
     
     
@@ -312,42 +315,18 @@
 <script>
 
 
-//  // Check if there was a playing audio before navigation
-//      window.onload = function() {
-//         let response = localStorage.getItem('playAudio');
-//         localStorage.removeItem('playAudio'); // Clear it after use
+function playVoiceAndNavigate(choice) {
+        let audio;
+        if (choice === 'yes') {
+            audio = document.getElementById('voiceYes');
+        } else {
+            audio = document.getElementById('voiceNo');
+        }
 
-//         let yesAudio = document.getElementById('yesAudio');
-//         let noAudio = document.getElementById('noAudio');
-
-//         // Play the correct audio if it exists
-//         if (response === 'yes' && yesAudio) {
-//             yesAudio.play().catch(err => console.log("Audio play error:", err));
-//         } else if (response === 'no' && noAudio) {
-//             noAudio.play().catch(err => console.log("Audio play error:", err));
-//         }
-//     };
-document.addEventListener("DOMContentLoaded", function () {
-            // Get the stored response
-            const playAudio = localStorage.getItem('playAudio');
-
-            // Select the correct audio element
-            let audio;
-            if (playAudio === 'yes') {
-                audio = document.getElementById("yesAudio");
-            } else if (playAudio === 'no') {
-                audio = document.getElementById("noAudio");
-            }
-
-            // Play the audio if it's selected
-            if (audio) {
-                audio.play().catch(error => console.log("Audio playback failed:", error));
-            }
-
-            // Clear the localStorage key to avoid replay on refresh
-            localStorage.removeItem('playAudio');
-        });
-
+        if (audio) {
+            audio.play();
+        }
+    }
 
 
 document.getElementById('whatsappForm').addEventListener('submit', function(event) {
